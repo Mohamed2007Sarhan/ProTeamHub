@@ -11,6 +11,7 @@ $msg = "";
 $Error_Pass = "";
 if (isset($_GET['Verification'])) {
   $raquet = mysqli_query($conx, "SELECT * FROM register WHERE CodeV='{$_GET['Verification']}'");
+  
   if (mysqli_num_rows($raquet) > 0) {
     $query = mysqli_query($conx, "UPDATE register SET verification='1' WHERE CodeV='{$_GET['Verification']}'");
     if ($query) {
@@ -45,6 +46,8 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <head>
+<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>

@@ -24,7 +24,7 @@ if (!$email) {
 }
 
 // Fetch the user ID associated with the email
-$stmt = $conx->prepare("SELECT ID FROM register WHERE email = ?");
+$stmt = $conx->prepare("SELECT ID, user_type FROM register WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $result_user_id = $stmt->get_result();
@@ -32,6 +32,12 @@ $result_user_id = $stmt->get_result();
 if ($result_user_id->num_rows > 0) {
     $row = $result_user_id->fetch_assoc();
     $user_id = $row['ID'];
+    $type = $row['user_type'];
+
+    if ($type !== "organizer") {
+        header("Location: index.php");
+        exit();
+    }
     
     // Check if the user is a team founder
     $stmt_check_founder = $conx->prepare("SELECT * FROM team_founders WHERE user_id = ?");
@@ -174,13 +180,16 @@ if ($result_founder_data->num_rows > 0) {
 <html lang="en">
 
 <head>
+<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Team Founders Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fc;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #70e1f5, #ffd194);
             margin: 0;
             padding: 0;
             display: flex;
@@ -193,23 +202,25 @@ if ($result_founder_data->num_rows > 0) {
             width: 100%;
             max-width: 700px;
             background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: #333;
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: 700;
         }
 
         .form-group {
             display: none;
-            /* Hide sections initially */
             margin-bottom: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
 
         label {
@@ -217,29 +228,39 @@ if ($result_founder_data->num_rows > 0) {
             margin-bottom: 8px;
             color: #555;
             font-weight: 600;
+            font-size: 16px;
         }
 
         textarea,
         input[type="text"],
         input[type="file"] {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 12px;
+            font-size: 16px;
             background-color: #fafafa;
             box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            border-color: #4A90E2;
+            outline: none;
         }
 
         button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background-color: #4A90E2;
             color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: 500;
             transition: background-color 0.3s;
         }
 
@@ -270,6 +291,11 @@ if ($result_founder_data->num_rows > 0) {
             border-radius: 50%;
             object-fit: cover;
             margin-top: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-group img:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -283,44 +309,38 @@ if ($result_founder_data->num_rows > 0) {
             <div class="form-group" id="team-info">
                 <label for="team_name">Team Name</label>
                 <input type="text" name="team_name" id="team_name" value="<?php echo $team_name; ?>" required>
-                <p class="description">Enter the name of your team. This will represent your group within the platform.</p>
             </div>
 
             <div class="form-group" id="role-info">
                 <label for="role">Your Role in the Team</label>
                 <input type="text" name="role" id="role" value="<?php echo $role; ?>" required>
-                <p class="description">Define your role within the team, such as 'Founder', 'Manager', etc.</p>
             </div>
 
             <!-- Section 2: Profile Image -->
             <div class="form-group" id="image-upload">
                 <label for="img">Upload Profile Image</label>
                 <input type="file" name="img" id="img">
-                <p class="description">Upload an image that represents you as a member of the team. A professional profile picture is recommended.</p>
                 <?php if (isset($row['img']) && $row['img'] != ""): ?>
                     <img src="../uploads/<?php echo $row['img']; ?>" alt="Profile Image">
                 <?php endif; ?>
             </div>
+
             <!-- Section 3: Your BIO -->
             <div class="form-group" id="bio">
                 <label for="bio">Your BIO in the Team</label>
                 <input type="text" name="bio" id="bio" value="" required>
-                <p class="description">Enter a short description of yourself, such as your background, skills, and contributions within the team.</p>
             </div>
 
-
-            <!-- Section 3: Upload CV -->
+            <!-- Section 4: Upload CV -->
             <div class="form-group" id="cv-upload">
                 <label for="cv">Upload Your CV</label>
                 <input type="file" name="cv" id="cv" required>
-                <p class="description">Please upload your CV in PDF or DOC format. It will help showcase your qualifications.</p>
             </div>
 
-            <!-- Section 4: Description -->
+            <!-- Section 5: Description -->
             <div class="form-group" id="description-upload">
                 <label for="description">CV Description (optional)</label>
                 <textarea name="description" id="description"><?php echo isset($row['description']) ? $row['description'] : ''; ?></textarea>
-                <p class="description">Provide a brief description of your CV. This can include key highlights or a summary of your experience.</p>
             </div>
 
             <!-- Next Button -->
@@ -341,6 +361,7 @@ if ($result_founder_data->num_rows > 0) {
         function nextSection() {
             // Hide the current section
             sections[currentSection].style.display = 'none';
+            sections[currentSection].style.opacity = '0';
 
             // Move to the next section
             currentSection++;
@@ -348,6 +369,7 @@ if ($result_founder_data->num_rows > 0) {
             if (currentSection < sections.length) {
                 // Show the next section
                 sections[currentSection].style.display = 'block';
+                sections[currentSection].style.opacity = '1';
 
                 // Update the progress bar
                 progressBar.style.width = ((currentSection + 1) * 100) / sections.length + '%';
@@ -361,6 +383,7 @@ if ($result_founder_data->num_rows > 0) {
 
         // Initially display the first section
         sections[currentSection].style.display = 'block';
+        sections[currentSection].style.opacity = '1';
     </script>
 
 </body>

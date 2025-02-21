@@ -203,47 +203,74 @@ if ($result_members_data->num_rows > 0) {
 <html lang="en">
 
 <head>
+<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Completion Profile</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f7fc;
+            background-color: #eef2f7;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 700px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             position: relative;
+            animation: fadeIn 1s ease-in-out;
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 30px;
-            color: #333;
-            font-size: 24px;
+            margin-bottom: 40px;
+            color: #4a90e2;
+            font-size: 36px;
+            font-weight: 700;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: none;
+            opacity: 0;
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .form-group:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.9s;
+        }
+
+        .form-group:nth-child(5) {
+            animation-delay: 1.2s;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            color: #555;
+            color: #344955;
             font-weight: 600;
         }
 
@@ -251,48 +278,68 @@ if ($result_members_data->num_rows > 0) {
         input[type="text"],
         input[type="file"] {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 14px;
             background-color: #fafafa;
             box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 12px rgba(74, 144, 226, 0.3);
         }
 
         button {
             width: 100%;
-            padding: 12px;
-            background-color: #4A90E2;
+            padding: 16px;
+            background-color: #4a90e2;
             color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            transform: scale(1);
+            font-weight: bold;
         }
 
         button:hover {
-            background-color: #357ABD;
+            background-color: #357abd;
+            transform: scale(1.05);
         }
 
         .progress-bar {
             width: 100%;
-            height: 5px;
-            background-color: #ddd;
-            border-radius: 5px;
-            margin-top: 20px;
-            margin-bottom: 30px;
+            height: 8px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin-top: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .progress-bar span {
             display: block;
             height: 100%;
-            background-color: #4A90E2;
+            background-color: #4a90e2;
             width: 0%;
-            border-radius: 5px;
+            border-radius: 10px;
+            transition: width 0.5s ease-out;
         }
 
-        /* Animation */
+        .progress-bar-label {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 15px;
+            color: #4a90e2;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -301,6 +348,28 @@ if ($result_members_data->num_rows > 0) {
             to {
                 opacity: 1;
             }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* تحسينات على التأثيرات */
+        input[type="file"] {
+            padding: 12px;
+            background-color: #f7f7f7;
+        }
+
+        input[type="file"]:hover {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -313,14 +382,14 @@ if ($result_members_data->num_rows > 0) {
             <!-- قسم المهارات -->
             <div class="form-group" id="skillsSection">
                 <label for="skills">Skills:</label>
-                <textarea id="skills" name="skills" rows="5" required><?= htmlspecialchars($skills) ?></textarea>
+                <textarea id="skills" name="skills" rows="5" required></textarea>
                 <p>Enter your skills to help others understand your expertise.</p>
             </div>
 
             <!-- قسم الخبرة -->
             <div class="form-group" id="experienceSection">
                 <label for="experience">Experience:</label>
-                <textarea id="experience" name="experience" rows="5" required><?= htmlspecialchars($experience) ?></textarea>
+                <textarea id="experience" name="experience" rows="5" required></textarea>
                 <p>Describe your professional experience, including relevant job roles.</p>
             </div>
 
@@ -332,9 +401,11 @@ if ($result_members_data->num_rows > 0) {
                 <input type="text" id="description" name="description" placeholder="Optional description">
                 <p>Upload your CV to provide more details about your qualifications.</p>
             </div>
-            <div class="form-group" id="bio">
+
+            <!-- قسم السيرة الذاتية -->
+            <div class="form-group" id="bioSection">
                 <label for="bio">Your BIO in the Team</label>
-                <input type="text" name="bio" id="bio" value="" required>
+                <input type="text" name="bio" id="bio" required>
                 <p class="description">Enter a short description of yourself.</p>
             </div>
 
@@ -349,6 +420,8 @@ if ($result_members_data->num_rows > 0) {
                 <span id="progress"></span>
             </div>
 
+            <p class="progress-bar-label" id="progressLabel">Step 1 of 5</p>
+
             <button type="button" onclick="nextSection()">Next</button>
         </form>
     </div>
@@ -357,10 +430,12 @@ if ($result_members_data->num_rows > 0) {
         let currentSection = 0;
         const sections = document.querySelectorAll('.form-group');
         const progressBar = document.getElementById('progress');
+        const progressLabel = document.getElementById('progressLabel');
         const nextButton = document.querySelector('button');
 
         function showSection(index) {
             sections[index].style.display = 'block';
+            sections[index].style.animation = 'slideIn 1s ease-out forwards';
         }
 
         function hideSections() {
@@ -372,13 +447,13 @@ if ($result_members_data->num_rows > 0) {
         function updateProgress() {
             const progress = ((currentSection + 1) / sections.length) * 100;
             progressBar.style.width = progress + '%';
+            progressLabel.textContent = `Step ${currentSection + 1} of ${sections.length}`;
         }
 
         function nextSection() {
             const skills = document.getElementById('skills');
             const experience = document.getElementById('experience');
 
-            // تحقق من أن الحقول المطلوبة غير فارغة
             if (currentSection === 0 && skills.value.trim() === '') {
                 alert('Please fill in your skills.');
                 return;
