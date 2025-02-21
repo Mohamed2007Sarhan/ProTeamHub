@@ -39,6 +39,8 @@ try {
     $mail->Body    = '
     <html>
     <head>
+<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
+
         <meta charset="UTF-8">
         <style>
             body {

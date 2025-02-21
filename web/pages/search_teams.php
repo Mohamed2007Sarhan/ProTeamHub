@@ -128,11 +128,11 @@ function getUserImage($conx, $userId, $userType)
 <html lang="en">
 
 <head>
-<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
+    <link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications | ProTeamHub</title>
+    <title>Search Teams - Privet & Public Groups | ProTeamHub</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="app.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -218,7 +218,7 @@ function getUserImage($conx, $userId, $userType)
           ';
                     echo '<li><a href="notifications.php"><i class="fas fa-bell"></i> <span>Notifications</span></a></li>';
                     echo '<li><a href="news.php"><i class="fas fa-newspaper"></i> <span>News</span></a></li>';
-                    
+
                     echo '<li><a href="ask_expert.php"><i class="fas fa-question-circle"></i> <span>Ask an Expert</span></a></li>';
                     echo '<li><a href="profile.php"><i class="fas fa-user"></i> <span>Profile</span></a></li>';
                     echo '
@@ -261,7 +261,7 @@ function getUserImage($conx, $userId, $userType)
                     // echo '<li><a href="manage_teams.php"><i class="fas fa-users"></i>  <span>Manage Teams</span></a></li>';
                     // echo '<li><a href="join_requests.php"><i class="fas fa-users-cog"></i>  <span>Join Requests</span></a></li>';
                     echo '<li><a href="reports.php"><i class="fas fa-chart-line"></i> <span>Reports & Analytics</span></a></li>';
-                    
+
                     echo '<li><a href="opportunities.php"><i class="fas fa-briefcase"></i> <span>Opportunities (Gigs)</span></a></li>';
                     echo '
           <button onclick=toggleSubMenu(this) class="dropdown-btn">
@@ -310,7 +310,7 @@ function getUserImage($conx, $userId, $userType)
                     echo '<li><a href="manage_teams.php"><i class="fas fa-users"></i> <span>Manage Teams</span></a></li>';
                     echo '<li><a href="join_requests.php"><i class="fas fa-users-cog"></i> <span>Join Requests</span></a></li>';
                     echo '<li><a href="reports.php"><i class="fas fa-chart-line"></i> <span>Reports & Analytics</span></a></li>';
-                    
+
                     echo '<li><a href="opportunities.php"><i class="fas fa-briefcase"></i> <span>Opportunities (Gigs)</span></a></li>';
                     echo '
           <button onclick=toggleSubMenu(this) class="dropdown-btn">
@@ -355,7 +355,7 @@ function getUserImage($conx, $userId, $userType)
                     echo '<li>';
                     echo '<li class="active"><a href="index.php"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>';
                     echo '<li><a href="offers_opportunities.php"><i class="fas fa-gift"></i> <span>Offers & Opportunities</span></a></li>';
-                    
+
                     echo '
           <button onclick=toggleSubMenu(this) class="dropdown-btn">
           <i class="fas fa-cogs"></i>
@@ -410,313 +410,276 @@ function getUserImage($conx, $userId, $userType)
             <i id="theme-icon" class="fa fa-sun"></i>
             <span id="theme-text">Light Mode</span>
         </button>
+        <!DOCTYPE html>
+        <html lang="en">
 
-        <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="MgsacowUVEfErnjwaOmBS";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
-
-            /* :root {
-                --bg-clr: #ef4d61;
-                --white: #fff;
-                --text-primary-clr: #282c36;
-                --text-secondary-clr: #a9abaf;
-                --first-clr: #007bc2;
-                --second-clr: #f0a92e;
-                --third-clr: #21a67a;
-            } */
-            :root {
-                --bg-clr: #f4f4f9;
-                --line-clr: #d1d6e0;
-                --hover-clr: #e0e4f1;
-                --text-clr: #11121a;
-                --accent-clr: #5e63ff;
-                --secondary-text-clr: #7a7f90;
-            }
-
-            /* وضع المظلم */
-            :root[data-theme='dark'] {
-                --bg-clr: #11121a;
-                --line-clr: #42434a;
-                --hover-clr: #222533;
-                --text-clr: #e6e6ef;
-                --accent-clr: #5e63ff;
-                --secondary-text-clr: #b0b3c1;
-            }
-
-            /* وضع الإضاءة (Light Mode) عند التبديل يدوياً */
-            body[data-theme='light'] {
-                --bg-clr: #f4f4f9;
-                --line-clr: #d1d6e0;
-                --hover-clr: #e0e4f1;
-                --text-clr: #11121a;
-                --accent-clr: #5e63ff;
-                --secondary-text-clr: #7a7f90;
-            }
-
-            /* وضع المظلم (Dark Mode) عند التبديل يدوياً */
-            body[data-theme='dark'] {
-                --bg-clr: #11121a;
-                --line-clr: #42434a;
-                --hover-clr: #222533;
-                --text-clr: #e6e6ef;
-                --accent-clr: #5e63ff;
-                --secondary-text-clr: #b0b3c1;
-            }
-
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: "Open Sans", sans-serif;
-            }
-
-            body {
-                font-size: 12px;
-            }
-
-            .wrapper {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-                padding: 0 10px;
-                color: var(--text-clr);
-            }
-
-            .alert_wrapper .alert_item {
-                background: var(--white);
-                margin-bottom: 25px;
-                padding: 20px 25px;
-                border-radius: 3px;
-                display: flex;
-                align-items: center;
-                box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
-            }
-
-            .alert_wrapper .alert_item .text {
-                padding: 0 20px;
-                width: calc(100% - 80px);
-            }
-
-            .alert_wrapper .alert_item .text h3 {
-                font-size: 16px;
-                margin-bottom: 5px;
-                color: var(--text-primary-clr);
-            }
-
-            .alert_wrapper .alert_item .text p {
-                color: var(--text-secondary-clr);
-            }
-
-            .alert_wrapper .alert_item .icon,
-            .alert_wrapper .alert_item .close {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 50px;
-                height: 40px;
-                border-radius: 50%;
-            }
-
-            .alert_wrapper .alert_item .icon ion-icon {
-                color: var(--white);
-                font-size: 20px;
-            }
-
-            .alert_wrapper .alert_item.first_item .icon {
-                background: var(--first-clr);
-            }
-
-            .alert_wrapper .alert_item.second_item .icon {
-                background: var(--second-clr);
-            }
-
-            .alert_wrapper .alert_item.third_item .icon {
-                background: var(--third-clr);
-            }
-
-            .alert_wrapper .alert_item .close {
-                font-size: 25px;
-                color: var(--text-secondary-clr);
-            }
-
-            .alert_wrapper .alert_item .close ion-icon {
-                cursor: pointer;
-                transition: all 0.5s ease;
-            }
-
-            .alert_wrapper .alert_item.first_item .close ion-icon:hover {
-                color: var(--first-clr);
-            }
-
-            .alert_wrapper .alert_item.second_item .close ion-icon:hover {
-                color: var(--second-clr);
-            }
-
-            .alert_wrapper .alert_item.third_item .close ion-icon:hover {
-                color: var(--third-clr);
-            }
-
-            /* CSS الأساسي للتنسيق */
-            .wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                min-height: 100vh;
-                /* يجعل الغلاف يغطي الارتفاع الكامل */
-                padding: 10px;
-            }
-
-            .alert_wrapper {
-                height: 170px;
-                /* يجعل التنبيه يغطي العرض الكامل */
-                max-width: 600px;
-                /* يمكنك ضبط الحجم الأقصى إذا كنت ترغب في تحديد عرض معين */
-                margin-bottom: 20px;
-                /* مسافة بين التنبيهات */
-                /* لون خلفية التنبيه */
-                border-radius: 5px;
-                padding: 15px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            .alert_item {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .icon,
-            .text,
-            .close {
-                flex: 1;
-                padding: 10px;
-            }
-
-            .text {
-                flex: 3;
-                text-align: left;
-            }
-
-            @media (max-width: 768px) {
-                .alert_wrapper {
-                    width: 100vw;
-                    /* يأخذ العرض الكامل للشاشة في الأجهزة الصغيرة */
-                    padding: 20px;
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Rooms List</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <style>
+                :root {
+                    --bg-clr: #f4f4f9;
+                    --line-clr: #d1d6e0;
+                    --hover-clr: #e0e4f1;
+                    --text-clr: #11121a;
+                    --accent-clr: #5e63ff;
+                    --secondary-text-clr: #7a7f90;
                 }
-            }
-        </style>
-        <?php
-        // جلب الحالة من قاعدة البيانات
-        $sql001 = "SELECT * FROM notviation WHERE user_id = ?";
-        $stmt001 = $conx->prepare($sql001);
-        $stmt001->bind_param("i", $userId);
-        $stmt001->execute();
-        $result001 = $stmt001->get_result();
 
-        // التحقق من وجود البيانات
-        if ($result001->num_rows > 0) {
-            echo '<div class="wrapper">'; // فتح عنصر الغلاف مرة واحدة فقط
-            while ($row = $result001->fetch_assoc()) { // التكرار على جميع النتائج
-                $id = $row['id'];
-                $active = $row['active'];
-                $text = $row['text']; // قد يحتوي على روابط HTML
-                $Description = $row['Description']; // قد يحتوي على روابط HTML
-                $img = $row['img']; // يحتوي على كود HTML
-                $img_nov = $row['img_not']; // يحتوي على كود HTML
-                // تحقق إذا كانت الحالة "active" تساوي 1
-                if ($active == 1) {
-                    echo '<div class="alert_wrapper" data-id="' . $id . '">'; // غلاف لكل عنصر تنبيه
-                    echo '    <div class="alert_item third_item">';
-                    echo '        ' . $img; // إدراج كود HTML المخزن كما هو
-                    echo '        <div class="text">';
-                    echo '            <h3>' . $text . '</h3>'; // عرض النص مع روابط HTML
-                    echo '            <p>' . $Description . '</p>'; // عرض الوصف مع روابط HTML
-                    echo '        </div>';
-                    echo '        <div class="close">';
-                    echo '            <ion-icon name="close" onclick="closeNotification(' . $id . ')"></ion-icon>';
-                    echo '        </div>';
-                    echo '    </div>';
-                    echo '</div>';
+                /* وضع المظلم */
+                :root[data-theme='dark'] {
+                    --bg-clr: #11121a;
+                    --line-clr: #42434a;
+                    --hover-clr: #222533;
+                    --text-clr: #e6e6ef;
+                    --accent-clr: #5e63ff;
+                    --secondary-text-clr: #b0b3c1;
                 }
-            }
-            echo '</div>'; // غلق عنصر الغلاف
-        } else {
-            echo "No notifications found.";
-        }
-        ?>
+
+                /* وضع الإضاءة (Light Mode) عند التبديل يدوياً */
+                body[data-theme='light'] {
+                    --bg-clr: #f4f4f9;
+                    --line-clr: #d1d6e0;
+                    --hover-clr: #e0e4f1;
+                    --text-clr: #11121a;
+                    --accent-clr: #5e63ff;
+                    --secondary-text-clr: #7a7f90;
+                }
+
+                /* وضع المظلم (Dark Mode) عند التبديل يدوياً */
+                body[data-theme='dark'] {
+                    --bg-clr: #11121a;
+                    --line-clr: #42434a;
+                    --hover-clr: #222533;
+                    --text-clr: #e6e6ef;
+                    --accent-clr: #5e63ff;
+                    --secondary-text-clr: #b0b3c1;
+                }
 
 
-        <script>
-            function closeNotification(id) {
-                // إنشاء طلب AJAX
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "update_notification.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        // إزالة التنبيه من الصفحة بعد تحديثه بنجاح
-                        var element = document.querySelector('.alert_wrapper[data-id="' + id + '"]');
-                        if (element) {
-                            element.style.display = 'none';
+
+                body {
+                    background-color: var(--bg-clr);
+                }
+
+                .card {
+                    background: rgba(255, 255, 255, 0.2);
+                    /* Transparent background */
+                    backdrop-filter: blur(10px);
+                    /* Blur effect */
+                    -webkit-backdrop-filter: blur(10px);
+                    border-radius: 15px;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    /* Light border */
+                    transition: 0.3s ease-in-out;
+                }
+
+                .card:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+                }
+
+                .join-btn {
+                    background-color: rgba(0, 123, 255, 0.8);
+                    color: white;
+                    border-radius: 10px;
+                }
+
+                .join-btn:hover {
+                    background-color: rgba(0, 86, 179, 0.9);
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="container my-4" style="border: none;">
+                <h1 class="text-center text-light mb-4">🏠 Public Teams</h1>
+                <div class="search-box position-relative">
+                    <i class="fa fa-search search-icon"></i>
+                    <input type="text" id="roomSearch" class="form-control" placeholder="Search rooms...">
+                    <label for="roomSearch" class="search-label">🔍 Search Teams</label>
+                </div>
+            </div>
+
+            <style>
+                .search-box {
+                    position: relative;
+                    max-width: 400px;
+                    margin: 0 auto 20px;
+                }
+
+                .search-icon {
+                    position: absolute;
+                    left: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: var(--secondary-text-clr);
+                }
+
+                .form-control {
+                    padding-left: 35px;
+                    border-radius: 20px;
+                    border: 1px solid var(--line-clr);
+                    background: var(--bg-clr);
+                    color: var(--text-clr);
+                    transition: 0.3s;
+                }
+
+                .form-control:focus {
+                    border-color: var(--accent-clr);
+                    box-shadow: 0 0 10px rgba(94, 99, 255, 0.3);
+                }
+
+                .search-label {
+                    position: absolute;
+                    left: 40px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 14px;
+                    color: var(--secondary-text-clr);
+                    transition: 0.3s;
+                    pointer-events: none;
+                }
+
+                .form-control:focus+.search-label,
+                .form-control:not(:placeholder-shown)+.search-label {
+                    top: 10px;
+                    font-size: 12px;
+                    color: var(--accent-clr);
+                }
+            </style>
+
+            <script>
+                document.getElementById("roomSearch").addEventListener("input", function() {
+                    let filter = this.value.toLowerCase();
+                    let rooms = document.querySelectorAll(".card");
+
+                    rooms.forEach(room => {
+                        let roomName = room.querySelector(".card-title").innerText.toLowerCase();
+                        if (roomName.includes(filter)) {
+                            room.parentElement.style.display = "block";
+                        } else {
+                            room.parentElement.style.display = "none";
                         }
+                    });
+                });
+            </script>
+
+            <div class="container my-5" style="border: none; max-width: none;">
+                <h2 class="text-center text-light mb-4">✅ Available Teams</h2>
+                <div class="row">
+                    <?php
+                    // Server credentials
+                    $server_url = "http://localhost:9000";
+                    $client_url = "http://localhost:8080";
+                    $access_token = "syt_bW9oYW1lZA_lbeDVZwOVYUExuBIPcwm_2zNKbv";
+
+                    // Fetch rooms
+                    $url = "$server_url/_synapse/admin/v1/rooms";
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                        "Authorization: Bearer $access_token"
+                    ]);
+                    $response = curl_exec($ch);
+                    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                    curl_close($ch);
+                    $data = json_decode($response, true);
+
+                    if ($http_code == 200 && isset($data['rooms'])) {
+                        foreach ($data['rooms'] as $room) {
+                            $room_id = htmlspecialchars($room['room_id']);
+                            $room_name = htmlspecialchars($room['name'] ?? "No Name");
+                            $room_alias = htmlspecialchars($room['canonical_alias'] ?? "#$room_id:localhost");
+                            $creator = htmlspecialchars($room['creator'] ?? "Unknown");
+
+                            // Fetch members count
+                            $room_details_url = "$server_url/_matrix/client/v3/rooms/$room_id/state/m.room.member";
+                            $ch = curl_init();
+                            curl_setopt($ch, CURLOPT_URL, $room_details_url);
+                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                                "Authorization: Bearer $access_token"
+                            ]);
+                            $room_details_response = curl_exec($ch);
+                            curl_close($ch);
+                            $room_details = json_decode($room_details_response, true);
+                            $member_count = is_array($room_details) ? count($room_details) : "❌ Not Available";
+
+                            // Join link
+                            $join_link = "$client_url/#/room/$room_alias";
+                    ?>
+                            <div class="col-md-4 mb-4">
+                                <div class="card shadow-sm p-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">🔹 <?php echo $room_name; ?></h5>
+                                        <p class="card-text">
+                                            <strong>🆔 ID:</strong> <?php echo $room_alias; ?><br>
+                                            <strong>👤 Created by:</strong> <?php echo $creator; ?><br>
+                                            <strong>👥 Members:</strong> <?php echo $member_count; ?>
+                                        </p>
+                                        <a href="<?php echo $join_link; ?>" class="btn join-btn w-100" target="_blank">
+                                            🚀 Join Now
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    } else {
+                        echo "<h2 class='text-danger text-center'>❌ Failed to fetch data! </h2>";
+                        echo "<p class='text-center'><strong>Response Code:</strong> $http_code</p>";
                     }
+                    ?>
+                </div>
+            </div>
+        </body>
+
+        </html>
+
+
+
+        <script>
+            (function() {
+                if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+                    window.chatbase = (...arguments) => {
+                        if (!window.chatbase.q) {
+                            window.chatbase.q = []
+                        }
+                        window.chatbase.q.push(arguments)
+                    };
+                    window.chatbase = new Proxy(window.chatbase, {
+                        get(target, prop) {
+                            if (prop === "q") {
+                                return target.q
+                            }
+                            return (...args) => target(prop, ...args)
+                        }
+                    })
+                }
+                const onLoad = function() {
+                    const script = document.createElement("script");
+                    script.src = "https://www.chatbase.co/embed.min.js";
+                    script.id = "MgsacowUVEfErnjwaOmBS";
+                    script.domain = "www.chatbase.co";
+                    document.body.appendChild(script)
                 };
-                xhr.send("id=" + id);
-            }
+                if (document.readyState === "complete") {
+                    onLoad()
+                } else {
+                    window.addEventListener("load", onLoad)
+                }
+            })();
         </script>
 
 
 
 
 
-        <!-- <div class="wrapper">
-            <div class="alert_wrapper"> -->
-        <!-- <div class="alert_item first_item">
-                    <div class="icon">
-                        <ion-icon name="information"></ion-icon>
-                    </div>
-                    <div class="text">
-                        <h3>Check your input.</h3>
-                        <p>Please keep in mind to check your information before sending your request out.</p>
-                    </div>
-                    <div class="close">
-                        <ion-icon name="close"></ion-icon>
-                    </div>
-                </div> -->
-        <!-- <div class="alert_item second_item">
-                    <div class="icon">
-                        <ion-icon name="alert"></ion-icon>
-                    </div>
-                    <div class="text">
-                        <h3>Yikes. Something went wrong.</h3>
-                        <p>We're sorry that you have to experience some problems! Please try again later.</p>
-                    </div>
-                    <div class="close">
-                        <ion-icon name="close"></ion-icon>
-                    </div>
-                </div> -->
-        <!-- <div class="alert_item third_item">
-                    <div class="icon">
-                        <ion-icon name="checkmark"></ion-icon>
-                    </div>
-                    <div class="text">
-                        <h3>Great success!</h3>
-                        <p>Your settings have been updated.</p>
-                    </div>
-                    <div class="close">
-                        <ion-icon name="close"></ion-icon>
-                    </div>
-                </div> -->
-        <!-- </div>
-        </div> -->
-
-    </main>
     </main>
 </body>
 

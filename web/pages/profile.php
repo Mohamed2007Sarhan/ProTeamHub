@@ -128,9 +128,11 @@ function getUserImage($conx, $userId, $userType)
 <html lang="en">
 
 <head>
+<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodingDung | Profile Template</title>
+    <title>ProTeamHub | Profile Template</title>
     <link rel="stylesheet" href="profile.style.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>

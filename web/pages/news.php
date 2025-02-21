@@ -129,9 +129,11 @@ function getUserImage($conx, $userId, $userType)
 <html lang="en">
 
 <head>
+<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>News | ProTeamHub</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="app.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -195,7 +197,7 @@ function getUserImage($conx, $userId, $userType)
       switch ($user_type) {
         case 'member': // للمستخدم العادي
           echo '<li>';
-          echo '<li class="active"><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i>  <span>Dashboard</span></a></li>';
+          echo '<li class="active"><a href="index.php"><i class="fas fa-tachometer-alt"></i>  <span>Dashboard</span></a></li>';
           echo '<li><a href="search_teams.php"><i class="fas fa-search"></i>  <span>Search Teams</span></a></li>';
           echo '<li><a href="opportunities.php"><i class="fas fa-briefcase"></i> <span>Opportunities (Gigs)</span></a></li>';
           echo '
@@ -216,7 +218,7 @@ function getUserImage($conx, $userId, $userType)
           ';
           echo '<li><a href="notifications.php"><i class="fas fa-bell"></i> <span>Notifications</span></a></li>';
           echo '<li><a href="news.php"><i class="fas fa-newspaper"></i> <span>News</span></a></li>';
-          echo '<li><a href="ai_tools.php"><i class="fas fa-robot"></i> <span>AI Tools</span></a></li>';
+          
           echo '<li><a href="ask_expert.php"><i class="fas fa-question-circle"></i> <span>Ask an Expert</span></a></li>';
           echo '<li><a href="profile.php"><i class="fas fa-user"></i> <span>Profile</span></a></li>';
           echo '
@@ -240,7 +242,7 @@ function getUserImage($conx, $userId, $userType)
 
         case 'organizer': // للمنظمين
           echo '<li>';
-          echo '<li class="active"><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i>  <span>Dashboard</span></a></li>';
+          echo '<li class="active"><a href="index.php"><i class="fas fa-tachometer-alt"></i>  <span>Dashboard</span></a></li>';
           echo '
           <button onclick=toggleSubMenu(this) class="dropdown-btn">
           <i class="fas fa-users-cog"></i>
@@ -259,7 +261,7 @@ function getUserImage($conx, $userId, $userType)
           // echo '<li><a href="manage_teams.php"><i class="fas fa-users"></i>  <span>Manage Teams</span></a></li>';
           // echo '<li><a href="join_requests.php"><i class="fas fa-users-cog"></i>  <span>Join Requests</span></a></li>';
           echo '<li><a href="reports.php"><i class="fas fa-chart-line"></i> <span>Reports & Analytics</span></a></li>';
-          echo '<li><a href="ai_task_automation.php"><i class="fas fa-cogs"></i> <span>AI Task Automation</span></a></li>';
+          
           echo '<li><a href="opportunities.php"><i class="fas fa-briefcase"></i> <span>Opportunities (Gigs)</span></a></li>';
           echo '
           <button onclick=toggleSubMenu(this) class="dropdown-btn">
@@ -304,11 +306,11 @@ function getUserImage($conx, $userId, $userType)
 
         case 'company': // للشركات
           echo '<li>';
-          echo '<li class="active"><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>';
+          echo '<li class="active"><a href="index.php"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>';
           echo '<li><a href="manage_teams.php"><i class="fas fa-users"></i> <span>Manage Teams</span></a></li>';
           echo '<li><a href="join_requests.php"><i class="fas fa-users-cog"></i> <span>Join Requests</span></a></li>';
           echo '<li><a href="reports.php"><i class="fas fa-chart-line"></i> <span>Reports & Analytics</span></a></li>';
-          echo '<li><a href="ai_insights.php"><i class="fas fa-brain"></i> <span>AI Insights</span></a></li>';
+          
           echo '<li><a href="opportunities.php"><i class="fas fa-briefcase"></i> <span>Opportunities (Gigs)</span></a></li>';
           echo '
           <button onclick=toggleSubMenu(this) class="dropdown-btn">
@@ -351,9 +353,9 @@ function getUserImage($conx, $userId, $userType)
 
         case 'expert': // للخبراء
           echo '<li>';
-          echo '<li class="active"><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>';
+          echo '<li class="active"><a href="index.php"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>';
           echo '<li><a href="offers_opportunities.php"><i class="fas fa-gift"></i> <span>Offers & Opportunities</span></a></li>';
-          echo '<li><a href="ai_tools.php"><i class="fas fa-robot"></i> <span>AI Tools</span></a></li>';
+          
           echo '
           <button onclick=toggleSubMenu(this) class="dropdown-btn">
           <i class="fas fa-cogs"></i>
@@ -408,6 +410,11 @@ function getUserImage($conx, $userId, $userType)
       <i id="theme-icon" class="fa fa-sun"></i>
       <span id="theme-text">Light Mode</span>
     </button>
+
+
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="MgsacowUVEfErnjwaOmBS";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
     <style src="style.css">
       body {
         font-family: Arial, sans-serif;

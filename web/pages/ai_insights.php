@@ -132,12 +132,11 @@ function getUserImage($conx, $userId, $userType)
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications | ProTeamHub</title>
+    <title>Ask Expert | ProTeamHub</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="app.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 </head>
 
 <body>
@@ -411,312 +410,149 @@ function getUserImage($conx, $userId, $userType)
             <span id="theme-text">Light Mode</span>
         </button>
 
-        <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="MgsacowUVEfErnjwaOmBS";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 
-            /* :root {
-                --bg-clr: #ef4d61;
-                --white: #fff;
-                --text-primary-clr: #282c36;
-                --text-secondary-clr: #a9abaf;
-                --first-clr: #007bc2;
-                --second-clr: #f0a92e;
-                --third-clr: #21a67a;
-            } */
-            :root {
-                --bg-clr: #f4f4f9;
-                --line-clr: #d1d6e0;
-                --hover-clr: #e0e4f1;
-                --text-clr: #11121a;
-                --accent-clr: #5e63ff;
-                --secondary-text-clr: #7a7f90;
-            }
+        <!DOCTYPE html>
+        <html lang="ar">
 
-            /* وضع المظلم */
-            :root[data-theme='dark'] {
-                --bg-clr: #11121a;
-                --line-clr: #42434a;
-                --hover-clr: #222533;
-                --text-clr: #e6e6ef;
-                --accent-clr: #5e63ff;
-                --secondary-text-clr: #b0b3c1;
-            }
+        <head>
+<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
 
-            /* وضع الإضاءة (Light Mode) عند التبديل يدوياً */
-            body[data-theme='light'] {
-                --bg-clr: #f4f4f9;
-                --line-clr: #d1d6e0;
-                --hover-clr: #e0e4f1;
-                --text-clr: #11121a;
-                --accent-clr: #5e63ff;
-                --secondary-text-clr: #7a7f90;
-            }
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>ProTeamHub</title>
+            <link rel="stylesheet" href="style.css">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <style>
+                body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 0;
+}
 
-            /* وضع المظلم (Dark Mode) عند التبديل يدوياً */
-            body[data-theme='dark'] {
-                --bg-clr: #11121a;
-                --line-clr: #42434a;
-                --hover-clr: #222533;
-                --text-clr: #e6e6ef;
-                --accent-clr: #5e63ff;
-                --secondary-text-clr: #b0b3c1;
-            }
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    overflow: hidden;
+}
 
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    max-height: 300px;
+}
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: "Open Sans", sans-serif;
-            }
+.user-input {
+    display: flex;
+    margin-top: 10px;
+}
 
-            body {
-                font-size: 12px;
-            }
+#userMessage {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+}
 
-            .wrapper {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-                padding: 0 10px;
-                color: var(--text-clr);
-            }
+#sendButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
 
-            .alert_wrapper .alert_item {
-                background: var(--white);
-                margin-bottom: 25px;
-                padding: 20px 25px;
-                border-radius: 3px;
-                display: flex;
-                align-items: center;
-                box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
-            }
+#sendButton:hover {
+    background-color: #0056b3;
+}
 
-            .alert_wrapper .alert_item .text {
-                padding: 0 20px;
-                width: calc(100% - 80px);
-            }
+.user-msg {
+    background-color: #e1f5fe;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
 
-            .alert_wrapper .alert_item .text h3 {
-                font-size: 16px;
-                margin-bottom: 5px;
-                color: var(--text-primary-clr);
-            }
+.ai-msg {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
 
-            .alert_wrapper .alert_item .text p {
-                color: var(--text-secondary-clr);
-            }
+            </style>
+        </head>
 
-            .alert_wrapper .alert_item .icon,
-            .alert_wrapper .alert_item .close {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 50px;
-                height: 40px;
-                border-radius: 50%;
-            }
+        <body>
 
-            .alert_wrapper .alert_item .icon ion-icon {
-                color: var(--white);
-                font-size: 20px;
-            }
+            <div class="chat-container">
+                <div class="chat-box" id="chatBox">
+                    <!-- المحادثة ستظهر هنا -->
+                </div>
 
-            .alert_wrapper .alert_item.first_item .icon {
-                background: var(--first-clr);
-            }
+                <div class="user-input">
+                    <textarea id="userMessage" placeholder="اكتب هنا..."></textarea>
+                    <button id="sendButton">إرسال</button>
+                </div>
+            </div>
 
-            .alert_wrapper .alert_item.second_item .icon {
-                background: var(--second-clr);
-            }
+            <script>
+                $(document).ready(function() {
+                    $('#sendButton').click(function() {
+                        var userMessage = $('#userMessage').val();
+                        if (userMessage.trim() != "") {
+                            // عرض رسالة المستخدم في واجهة الشات
+                            $('#chatBox').append('<div class="user-msg"><b>أنت:</b> ' + userMessage + '</div>');
+                            $('#userMessage').val(''); // مسح المدخل
 
-            .alert_wrapper .alert_item.third_item .icon {
-                background: var(--third-clr);
-            }
-
-            .alert_wrapper .alert_item .close {
-                font-size: 25px;
-                color: var(--text-secondary-clr);
-            }
-
-            .alert_wrapper .alert_item .close ion-icon {
-                cursor: pointer;
-                transition: all 0.5s ease;
-            }
-
-            .alert_wrapper .alert_item.first_item .close ion-icon:hover {
-                color: var(--first-clr);
-            }
-
-            .alert_wrapper .alert_item.second_item .close ion-icon:hover {
-                color: var(--second-clr);
-            }
-
-            .alert_wrapper .alert_item.third_item .close ion-icon:hover {
-                color: var(--third-clr);
-            }
-
-            /* CSS الأساسي للتنسيق */
-            .wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                min-height: 100vh;
-                /* يجعل الغلاف يغطي الارتفاع الكامل */
-                padding: 10px;
-            }
-
-            .alert_wrapper {
-                height: 170px;
-                /* يجعل التنبيه يغطي العرض الكامل */
-                max-width: 600px;
-                /* يمكنك ضبط الحجم الأقصى إذا كنت ترغب في تحديد عرض معين */
-                margin-bottom: 20px;
-                /* مسافة بين التنبيهات */
-                /* لون خلفية التنبيه */
-                border-radius: 5px;
-                padding: 15px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            .alert_item {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .icon,
-            .text,
-            .close {
-                flex: 1;
-                padding: 10px;
-            }
-
-            .text {
-                flex: 3;
-                text-align: left;
-            }
-
-            @media (max-width: 768px) {
-                .alert_wrapper {
-                    width: 100vw;
-                    /* يأخذ العرض الكامل للشاشة في الأجهزة الصغيرة */
-                    padding: 20px;
-                }
-            }
-        </style>
-        <?php
-        // جلب الحالة من قاعدة البيانات
-        $sql001 = "SELECT * FROM notviation WHERE user_id = ?";
-        $stmt001 = $conx->prepare($sql001);
-        $stmt001->bind_param("i", $userId);
-        $stmt001->execute();
-        $result001 = $stmt001->get_result();
-
-        // التحقق من وجود البيانات
-        if ($result001->num_rows > 0) {
-            echo '<div class="wrapper">'; // فتح عنصر الغلاف مرة واحدة فقط
-            while ($row = $result001->fetch_assoc()) { // التكرار على جميع النتائج
-                $id = $row['id'];
-                $active = $row['active'];
-                $text = $row['text']; // قد يحتوي على روابط HTML
-                $Description = $row['Description']; // قد يحتوي على روابط HTML
-                $img = $row['img']; // يحتوي على كود HTML
-                $img_nov = $row['img_not']; // يحتوي على كود HTML
-                // تحقق إذا كانت الحالة "active" تساوي 1
-                if ($active == 1) {
-                    echo '<div class="alert_wrapper" data-id="' . $id . '">'; // غلاف لكل عنصر تنبيه
-                    echo '    <div class="alert_item third_item">';
-                    echo '        ' . $img; // إدراج كود HTML المخزن كما هو
-                    echo '        <div class="text">';
-                    echo '            <h3>' . $text . '</h3>'; // عرض النص مع روابط HTML
-                    echo '            <p>' . $Description . '</p>'; // عرض الوصف مع روابط HTML
-                    echo '        </div>';
-                    echo '        <div class="close">';
-                    echo '            <ion-icon name="close" onclick="closeNotification(' . $id . ')"></ion-icon>';
-                    echo '        </div>';
-                    echo '    </div>';
-                    echo '</div>';
-                }
-            }
-            echo '</div>'; // غلق عنصر الغلاف
-        } else {
-            echo "No notifications found.";
-        }
-        ?>
-
-
-        <script>
-            function closeNotification(id) {
-                // إنشاء طلب AJAX
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "update_notification.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        // إزالة التنبيه من الصفحة بعد تحديثه بنجاح
-                        var element = document.querySelector('.alert_wrapper[data-id="' + id + '"]');
-                        if (element) {
-                            element.style.display = 'none';
+                            // إرسال الرسالة إلى PHP باستخدام AJAX
+                            $.ajax({
+                                type: "POST",
+                                url: "chatbot.php",
+                                data: {
+                                    user_message: userMessage
+                                },
+                                success: function(response) {
+                                    // عرض الرد من الذكاء الاصطناعي
+                                    $('#chatBox').append('<div class="ai-msg"><b>الذكاء الاصطناعي:</b> ' + response + '</div>');
+                                    // تمرير الشات إلى الأسفل
+                                    $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+                                }
+                            });
                         }
-                    }
-                };
-                xhr.send("id=" + id);
-            }
-        </script>
+                    });
+
+                    // عند الضغط على "Enter" يمكن إرسال الرسالة
+                    $('#userMessage').keypress(function(e) {
+                        if (e.which == 13) { // 13 هو مفتاح "Enter"
+                            $('#sendButton').click();
+                        }
+                    });
+                });
+            </script>
+
+        </body>
+
+        </html>
 
 
 
-
-
-        <!-- <div class="wrapper">
-            <div class="alert_wrapper"> -->
-        <!-- <div class="alert_item first_item">
-                    <div class="icon">
-                        <ion-icon name="information"></ion-icon>
-                    </div>
-                    <div class="text">
-                        <h3>Check your input.</h3>
-                        <p>Please keep in mind to check your information before sending your request out.</p>
-                    </div>
-                    <div class="close">
-                        <ion-icon name="close"></ion-icon>
-                    </div>
-                </div> -->
-        <!-- <div class="alert_item second_item">
-                    <div class="icon">
-                        <ion-icon name="alert"></ion-icon>
-                    </div>
-                    <div class="text">
-                        <h3>Yikes. Something went wrong.</h3>
-                        <p>We're sorry that you have to experience some problems! Please try again later.</p>
-                    </div>
-                    <div class="close">
-                        <ion-icon name="close"></ion-icon>
-                    </div>
-                </div> -->
-        <!-- <div class="alert_item third_item">
-                    <div class="icon">
-                        <ion-icon name="checkmark"></ion-icon>
-                    </div>
-                    <div class="text">
-                        <h3>Great success!</h3>
-                        <p>Your settings have been updated.</p>
-                    </div>
-                    <div class="close">
-                        <ion-icon name="close"></ion-icon>
-                    </div>
-                </div> -->
-        <!-- </div>
-        </div> -->
-
-    </main>
     </main>
 </body>
 

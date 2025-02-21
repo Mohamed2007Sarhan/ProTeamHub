@@ -1,7 +1,7 @@
 <?php
 // Include encryption header
-// Include encryption header
 include('header.php');
+
 
 // Check if the decryption function exists (assuming you have an external shell or encryption method)
 if (!function_exists('decryptData')) {
@@ -78,7 +78,6 @@ if ($result->num_rows > 0) {
 }
 
 $stmt->close();
-$conx->close();
 
 /**
  * Get the user image URL based on their user type
@@ -133,7 +132,7 @@ function getUserImage($conx, $userId, $userType)
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support | ProTeamHub | Team Management Platform</title>
+  <title>Ask Expert | ProTeamHub</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="app.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -415,100 +414,281 @@ function getUserImage($conx, $userId, $userType)
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="MgsacowUVEfErnjwaOmBS";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
-    <style>
-  form {
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    background-color: blured;
-    margin: auto;
-  }
 
-  form input[type="text"], 
-  form input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-  }
 
-  form input[type="text"] {
-    background-color: #f9f9f9;
-  }
+    <!DOCTYPE html>
+    <html lang="en">
 
-  form input[type="submit"] {
-    background-color: #007BFF;
-    color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+    <head>
+<link rel="icon" href="https://i.postimg.cc/fyZ0fqZK/proteamhub-logo.png" type="image/png">
 
-  form input[type="submit"]:hover {
-    background-color: #0056b3;
-  }
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Profiles Page | ProTeamHub</title>
+      <style>
+        /* General page styling */
 
-  form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 18px;
-  }
 
-  .alert {
-    text-align: center;
-    font-weight: bold;
-    padding: 10px;
-    margin: 15px auto;
-    border-radius: 5px;
-    width: 350px;
-  }
+        /* Parent container for Profile Cards */
+        .profiles-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          /* Small gap between items */
+          justify-content: flex-start;
+        }
 
-  .alert.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-  }
+        /* Styling for each Profile Card */
+        .profile-container {
+          background-color: blured;
+          /* Light gray background */
+          padding: 15px;
+          border-radius: 10px;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          width: 200px;
+          /* Fixed width for each card */
+          text-align: center;
+          transition: all 0.3s ease-in-out;
+          position: relative;
+          /* For the star positioning */
+        }
 
-  .alert.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-  }
-</style>
+        .profile-container:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
 
-<center>
-  <?php
-  $support_value = isset($_GET["support"]) ? $_GET["support"] : "";
-  $values_alert = "";
-  $alert_class = "";
+        /* Container for the profile image */
+        .image-container {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          /* Make the container circular */
+          overflow: hidden;
+          /* Ensure the image stays within the circle */
+          margin: 0 auto;
+          /* Center the container */
+          border: 4px solid #007bff;
+          /* Blue border around the image */
+          position: relative;
+          /* For the star positioning */
+        }
 
-  if ($support_value == "good") {
-    $values_alert = "😊 Thanks for your feedback!";
-    $alert_class = "success";
-  } elseif ($support_value == "bad") {
-    $values_alert = "😞 Sorry to hear that!";
-    $alert_class = "error";
-  }
-  ?>
-  
-  <?php if (!empty($values_alert)): ?>
-  <div class="alert <?php echo $alert_class; ?>">
-    <?php echo $values_alert; ?>
-  </div>
-  <?php endif; ?>
+        /* Profile image styling */
+        .profile-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          /* Ensure the image fits well */
+          transition: all 0.3s ease;
+        }
 
-  <form action="config/support.php" method="post">
-    <h2>Contact Support</h2>
-    <input type="text" value="<?php echo isset($username) ? $username : ''; ?>" name="usernme" placeholder="Enter your username">
-    <input type="text" value="<?php echo isset($userEmail) ? $userEmail : ''; ?>" name="useremail" placeholder="Enter your email">
-    <input type="text" value="" name="massage" placeholder="Your Message">
-    <input type="submit" value="Submit">
-  </form>
-</center>
+        .profile-image:hover {
+          transform: scale(1.1);
+        }
+
+        /* Star styling */
+        .star {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background-color: gold;
+          color: white;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-container h2 {
+          font-size: 1.2em;
+          color: #333;
+          margin-top: 10px;
+        }
+
+        .profile-container p {
+          font-size: 0.9em;
+          color: #777;
+          margin: 8px 0;
+        }
+
+        .profile-container a {
+          color: #007bff;
+          text-decoration: none;
+        }
+
+        .profile-container button {
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 0.9em;
+          margin-top: 10px;
+          transition: all 0.3s ease;
+        }
+
+        .profile-container button:hover {
+          background-color: #0056b3;
+        }
+
+        .cv-button a button {
+          background-color: #28a745;
+        }
+
+        .cv-button a button:hover {
+          background-color: #218838;
+        }
+
+        /* Modal styling */
+        .modal {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          justify-content: center;
+          align-items: center;
+          z-index: 1;
+
+
+          background-color: rgba(0, 0, 0, 0.5);
+          /* لون خلفية مع شفافية */
+          backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          width: 80%;
+          max-width: 500px;
+          text-align: center;
+          animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .modal-content h3 {
+          font-size: 1.5em;
+          color: #333;
+          margin-bottom: 10px;
+        }
+
+        .modal-content p {
+          font-size: 1em;
+          color: #555;
+        }
+
+        .modal-content button {
+          padding: 10px 20px;
+          background-color: #dc3545;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-top: 20px;
+        }
+
+        .modal-content button:hover {
+          background-color: #c82333;
+        }
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+
+          100% {
+            opacity: 1;
+          }
+        }
+      </style>
+    </head>
+
+    <body>
+
+      <?php
+      $query = "SELECT r.*, e.portfolio_url, e.expertise_area, c.chat_platform 
+FROM register r
+LEFT JOIN experts e ON r.ID = e.user_id
+LEFT JOIN user_chat c ON r.ID = c.user_id
+WHERE r.user_type = 'expert'";
+
+      $stmt = $conx->prepare($query);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $users = $result->fetch_all(MYSQLI_ASSOC);
+      $stmt->close();
+
+      ?>
+
+
+
+
+      <div class="profiles-wrapper">
+        <?php foreach ($users as $user): ?>
+          <div class="profile-container">
+            <div class="star">★</div>
+            <div class="image-container">
+              <img src="<?= htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture" class="profile-image">
+            </div>
+            <h2><?= htmlspecialchars($user['Username']); ?></h2>
+            <p>Email: <a href="mailto:<?= htmlspecialchars($user['email']); ?>"><?= htmlspecialchars($user['email']); ?></a></p>
+            <button onclick="openModal('<?= $user['ID']; ?>')">View Full Profile</button>
+
+            <div class="cv-button">
+              <?php if (!empty($user['portfolio_url'])): ?>
+                <a href="<?= htmlspecialchars($user['portfolio_url']); ?>" target="_blank">
+                  <button>View Portfolio</button>
+                </a>
+              <?php else: ?>
+                <p>No Portfolio Available</p>
+              <?php endif; ?>
+            </div>
+
+            <div class="cv-button">
+              <?php if (!empty($user['portfolio_url'])): ?>
+                <a href="<?= htmlspecialchars($user['portfolio_url']); ?>" download>
+                  <button>Download CV</button>
+                </a>
+              <?php else: ?>
+                <p>No CV available</p>
+              <?php endif; ?>
+            </div>
+
+            <p>Expertise Area: <span><?= htmlspecialchars($user['expertise_area']); ?></span></p>
+            <p>Chat Platform: <span><?= htmlspecialchars($user['chat_platform']); ?></span></p>
+          </div>
+
+          <!-- Modal for Experience -->
+          <div id="<?= $user['ID']; ?>" class="modal">
+            <div class="modal-content">
+              <h3><?= htmlspecialchars($user['Username']); ?></h3>
+              <p><strong>Experience:</strong> <?= htmlspecialchars($user['expertise_area']); ?></p>
+              <button onclick="closeModal('<?= $user['ID']; ?>')">Close</button>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+
+
+      <script>
+        function openModal(personId) {
+          document.getElementById(personId).style.display = 'flex';
+        }
+
+        function closeModal(personId) {
+          document.getElementById(personId).style.display = 'none';
+        }
+      </script>
+
+
   </main>
 </body>
 
