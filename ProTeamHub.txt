@@ -1,0 +1,59 @@
+ProTeamHub
+
+
+
+
+admin banal full ✖️✔️ لسا الباقي احنا خلصنا الفات
+
+matrix admin banal ✔️
+
+design index main ✔️ باق اضافة ال job_post , expert_chat
+
+Link eDesign ✔️
+
+
+
+member:
+Dashboard
+opportunities ✔️
+links chat ✔️
+profile backend
+sitting
+
+
+organizer:
+dashboard
+link team dashboard
+rebort
+opportunities✔️
+chat link ✔️
+profile php backend
+sitting
+
+expert:
+matrix limit
+dashboard
+offers ✔️✔️
+sitting
+link chat dashboard ✔️
+design img
+profile php backend
+ 
+
+company:
+link teams dashboard 
+rebort
+opportunities ✔️
+chat link ✔️
+sitting
+profile backend
+
+
+chack all web 
+
+test fast
+test login ✔️
+test bug
+test admin panal
+edit all password
+upload files in free host for test
